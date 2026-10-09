@@ -1,0 +1,146 @@
+id: industrial_estate
+name: Industrial Estate, Khurda (demo)
+type: industrial_estate
+city: Khurda
+state: Odisha
+lat: 20.128
+lon: 85.62
+area_sqm: 89300
+population:
+  workers: 5200
+  staff: 300
+solar_kw: 400
+modules:
+- air
+- energy
+- water
+- waste
+- traffic
+- assets
+- safety
+- emissions
+thresholds:
+  pm25_alert: 75
+  bin_alert_pct: 80
+  water_lpcd: 200
+  energy_kwh_per_sqm_month: 12.1
+  night_flow_ratio: 0.6
+tariff:
+  peak: 8.4
+  offpeak: 5.9
+  peak_start: 18
+  peak_end: 22
+  currency: INR
+emission:
+  grid_kg_per_kwh: 0.71
+  dg_kg_per_kwh: 0.82
+  note: Indicative grid factor, editable assumption (see docs/ASSUMPTIONS.md)
+schedule:
+  work_start: 6
+  work_end: 22
+  weekend_factor: 0.8
+  always_on: true
+  holidays: []
+score_weights:
+  energy: 0.25
+  water: 0.15
+  waste: 0.15
+  air: 0.2
+  emissions: 0.15
+  safety: 0.1
+zones:
+- id: unit_a
+  name: Fabrication units
+  type: industrial
+  lat: 20.129
+  lon: 85.618
+  area_sqm: 30000
+  load_kw: 620
+  water_kld: 320
+  bins: 3
+- id: unit_b
+  name: Chemical processing
+  type: industrial
+  lat: 20.127
+  lon: 85.6225
+  area_sqm: 24000
+  load_kw: 540
+  water_kld: 480
+  bins: 3
+- id: unit_c
+  name: Packaging units
+  type: industrial
+  lat: 20.1262
+  lon: 85.619
+  area_sqm: 16000
+  load_kw: 260
+  water_kld: 90
+  bins: 2
+- id: admin
+  name: Estate office
+  type: office
+  lat: 20.13
+  lon: 85.621
+  area_sqm: 2500
+  load_kw: 60
+  water_kld: 20
+  bins: 1
+- id: etp
+  name: Common ETP
+  type: utility
+  lat: 20.125
+  lon: 85.624
+  area_sqm: 3000
+  load_kw: 150
+  water_kld: 60
+  bins: 1
+- id: truck
+  name: Truck parking
+  type: parking
+  lat: 20.1305
+  lon: 85.6165
+  area_sqm: 12000
+  load_kw: 15
+  water_kld: 4
+  bins: 1
+  parking_capacity: 260
+- id: canteen
+  name: Workers canteen
+  type: canteen
+  lat: 20.1285
+  lon: 85.6205
+  area_sqm: 1800
+  load_kw: 70
+  water_kld: 70
+  bins: 2
+assets:
+- id: comp_1
+  name: Air compressor
+  type: compressor
+  zone: unit_a
+  rated_kw: 110
+- id: furnace
+  name: Induction furnace
+  type: furnace
+  zone: unit_b
+  rated_kw: 400
+- id: dg_1
+  name: DG set
+  type: dg
+  zone: etp
+  rated_kw: 800
+- id: etp_pump
+  name: ETP pump
+  type: pump
+  zone: etp
+  rated_kw: 37
+- id: trans_1
+  name: Transformer
+  type: transformer
+  zone: unit_a
+  rated_kw: 1000
+- id: press
+  name: Hydraulic press
+  type: machine
+  zone: unit_c
+  rated_kw: 75

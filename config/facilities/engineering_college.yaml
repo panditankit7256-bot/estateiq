@@ -1,0 +1,148 @@
+id: engineering_college
+name: College of Engineering, Bhubaneswar (demo)
+type: college
+city: Bhubaneswar
+state: Odisha
+lat: 20.2961
+lon: 85.8245
+area_sqm: 64300
+population:
+  students: 4200
+  staff: 380
+solar_kw: 150
+modules:
+- air
+- energy
+- water
+- waste
+- traffic
+- assets
+- safety
+- emissions
+thresholds:
+  pm25_alert: 60
+  bin_alert_pct: 80
+  water_lpcd: 120
+  energy_kwh_per_sqm_month: 7.0
+  night_flow_ratio: 0.35
+tariff:
+  peak: 9.2
+  offpeak: 6.4
+  peak_start: 18
+  peak_end: 22
+  currency: INR
+emission:
+  grid_kg_per_kwh: 0.71
+  dg_kg_per_kwh: 0.82
+  note: Indicative grid factor, editable assumption (see docs/ASSUMPTIONS.md)
+schedule:
+  work_start: 8
+  work_end: 18
+  weekend_factor: 0.45
+  always_on: false
+  holidays:
+  - '2026-10-20'
+  - '2026-10-21'
+score_weights:
+  energy: 0.25
+  water: 0.15
+  waste: 0.15
+  air: 0.2
+  emissions: 0.15
+  safety: 0.1
+zones:
+- id: acad
+  name: Academic block
+  type: academic
+  lat: 20.2975
+  lon: 85.823
+  area_sqm: 18000
+  load_kw: 210
+  water_kld: 60
+  bins: 2
+- id: lab
+  name: Engineering labs
+  type: academic
+  lat: 20.2968
+  lon: 85.8262
+  area_sqm: 9000
+  load_kw: 260
+  water_kld: 40
+  bins: 2
+- id: hostel
+  name: Hostels
+  type: hostel
+  lat: 20.2942
+  lon: 85.8205
+  area_sqm: 22000
+  load_kw: 190
+  water_kld: 260
+  bins: 3
+- id: canteen
+  name: Canteen and mess
+  type: canteen
+  lat: 20.2951
+  lon: 85.8238
+  area_sqm: 2500
+  load_kw: 95
+  water_kld: 90
+  bins: 3
+- id: lib
+  name: Library
+  type: academic
+  lat: 20.2979
+  lon: 85.8248
+  area_sqm: 5000
+  load_kw: 85
+  water_kld: 15
+  bins: 1
+- id: park
+  name: Main parking
+  type: parking
+  lat: 20.2987
+  lon: 85.8218
+  area_sqm: 6000
+  load_kw: 12
+  water_kld: 3
+  bins: 1
+  parking_capacity: 420
+- id: util
+  name: STP and utility yard
+  type: utility
+  lat: 20.2935
+  lon: 85.827
+  area_sqm: 1800
+  load_kw: 70
+  water_kld: 25
+  bins: 1
+assets:
+- id: ac_chiller
+  name: Central chiller
+  type: hvac
+  zone: acad
+  rated_kw: 120
+- id: pump_1
+  name: Water pump P1
+  type: pump
+  zone: hostel
+  rated_kw: 22
+- id: dg_1
+  name: Diesel generator
+  type: dg
+  zone: util
+  rated_kw: 250
+- id: lab_cnc
+  name: CNC machine
+  type: machine
+  zone: lab
+  rated_kw: 30
+- id: lift_h
+  name: Hostel lift
+  type: lift
+  zone: hostel
+  rated_kw: 11
+- id: trans_1
+  name: Transformer T1
+  type: transformer
+  zone: util
+  rated_kw: 500

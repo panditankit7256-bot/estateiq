@@ -1,0 +1,146 @@
+id: government_hospital
+name: District Government Hospital (demo)
+type: hospital
+city: Cuttack
+state: Odisha
+lat: 20.4625
+lon: 85.883
+area_sqm: 33900
+population:
+  patients: 1800
+  staff: 950
+solar_kw: 200
+modules:
+- air
+- energy
+- water
+- waste
+- traffic
+- assets
+- safety
+- emissions
+thresholds:
+  pm25_alert: 60
+  bin_alert_pct: 80
+  water_lpcd: 340
+  energy_kwh_per_sqm_month: 22.5
+  night_flow_ratio: 0.55
+tariff:
+  peak: 9.8
+  offpeak: 7.0
+  peak_start: 18
+  peak_end: 22
+  currency: INR
+emission:
+  grid_kg_per_kwh: 0.71
+  dg_kg_per_kwh: 0.82
+  note: Indicative grid factor, editable assumption (see docs/ASSUMPTIONS.md)
+schedule:
+  work_start: 8
+  work_end: 20
+  weekend_factor: 0.85
+  always_on: true
+  holidays: []
+score_weights:
+  energy: 0.25
+  water: 0.15
+  waste: 0.15
+  air: 0.2
+  emissions: 0.15
+  safety: 0.1
+zones:
+- id: opd
+  name: OPD block
+  type: clinical
+  lat: 20.4632
+  lon: 85.8821
+  area_sqm: 7000
+  load_kw: 180
+  water_kld: 120
+  bins: 2
+- id: icu
+  name: ICU and OT
+  type: clinical
+  lat: 20.4621
+  lon: 85.8842
+  area_sqm: 4200
+  load_kw: 320
+  water_kld: 150
+  bins: 3
+- id: ward
+  name: Inpatient wards
+  type: clinical
+  lat: 20.461
+  lon: 85.8825
+  area_sqm: 12000
+  load_kw: 240
+  water_kld: 380
+  bins: 4
+- id: lab
+  name: Diagnostics lab
+  type: clinical
+  lat: 20.464
+  lon: 85.885
+  area_sqm: 2600
+  load_kw: 150
+  water_kld: 60
+  bins: 2
+- id: laundry
+  name: Laundry and kitchen
+  type: industrial
+  lat: 20.4605
+  lon: 85.8855
+  area_sqm: 2200
+  load_kw: 140
+  water_kld: 220
+  bins: 2
+- id: park
+  name: Visitor parking
+  type: parking
+  lat: 20.465
+  lon: 85.8815
+  area_sqm: 5000
+  load_kw: 8
+  water_kld: 2
+  bins: 1
+  parking_capacity: 300
+- id: boiler
+  name: Boiler house
+  type: utility
+  lat: 20.4598
+  lon: 85.8838
+  area_sqm: 900
+  load_kw: 110
+  water_kld: 40
+  bins: 1
+assets:
+- id: mri
+  name: MRI scanner
+  type: imaging
+  zone: lab
+  rated_kw: 90
+- id: ac_chiller
+  name: HVAC chiller
+  type: hvac
+  zone: icu
+  rated_kw: 180
+- id: dg_1
+  name: Diesel generator
+  type: dg
+  zone: boiler
+  rated_kw: 500
+- id: boiler_1
+  name: Steam boiler
+  type: boiler
+  zone: boiler
+  rated_kw: 60
+- id: o2_plant
+  name: Oxygen plant
+  type: plant
+  zone: icu
+  rated_kw: 45
+- id: lift_w
+  name: Ward lift
+  type: lift
+  zone: ward
+  rated_kw: 15

@@ -1,0 +1,137 @@
+id: company_campus
+name: Corporate IT Campus, Infocity (demo)
+type: company_campus
+city: Bhubaneswar
+state: Odisha
+lat: 20.35
+lon: 85.819
+area_sqm: 65900
+population:
+  employees: 6500
+solar_kw: 300
+modules:
+- air
+- energy
+- water
+- waste
+- traffic
+- assets
+- safety
+- emissions
+thresholds:
+  pm25_alert: 60
+  bin_alert_pct: 80
+  water_lpcd: 50
+  energy_kwh_per_sqm_month: 11.1
+  night_flow_ratio: 0.35
+tariff:
+  peak: 9.6
+  offpeak: 6.8
+  peak_start: 18
+  peak_end: 22
+  currency: INR
+emission:
+  grid_kg_per_kwh: 0.71
+  dg_kg_per_kwh: 0.82
+  note: Indicative grid factor, editable assumption (see docs/ASSUMPTIONS.md)
+schedule:
+  work_start: 9
+  work_end: 19
+  weekend_factor: 0.12
+  always_on: false
+  holidays:
+  - '2026-10-20'
+score_weights:
+  energy: 0.25
+  water: 0.15
+  waste: 0.15
+  air: 0.2
+  emissions: 0.15
+  safety: 0.1
+zones:
+- id: tower_a
+  name: Tower A
+  type: office
+  lat: 20.351
+  lon: 85.818
+  area_sqm: 24000
+  load_kw: 480
+  water_kld: 70
+  bins: 3
+- id: tower_b
+  name: Tower B
+  type: office
+  lat: 20.3495
+  lon: 85.8205
+  area_sqm: 22000
+  load_kw: 440
+  water_kld: 65
+  bins: 3
+- id: dc
+  name: Data centre
+  type: utility
+  lat: 20.3488
+  lon: 85.818
+  area_sqm: 1500
+  load_kw: 380
+  water_kld: 30
+  bins: 1
+- id: food
+  name: Food court
+  type: canteen
+  lat: 20.3502
+  lon: 85.8195
+  area_sqm: 2800
+  load_kw: 120
+  water_kld: 110
+  bins: 3
+- id: gym
+  name: Wellness and gym
+  type: academic
+  lat: 20.3515
+  lon: 85.821
+  area_sqm: 1600
+  load_kw: 50
+  water_kld: 45
+  bins: 1
+- id: park
+  name: Basement and surface parking
+  type: parking
+  lat: 20.352
+  lon: 85.8175
+  area_sqm: 14000
+  load_kw: 22
+  water_kld: 4
+  bins: 1
+  parking_capacity: 900
+assets:
+- id: chiller_1
+  name: Chiller 1
+  type: hvac
+  zone: tower_a
+  rated_kw: 260
+- id: chiller_2
+  name: Chiller 2
+  type: hvac
+  zone: tower_b
+  rated_kw: 260
+- id: ups_dc
+  name: Data-centre UPS
+  type: ups
+  zone: dc
+  rated_kw: 300
+- id: dg_1
+  name: DG set
+  type: dg
+  zone: dc
+  rated_kw: 750
+- id: lift_a
+  name: Tower A lifts
+  type: lift
+  zone: tower_a
+  rated_kw: 40
+- id: pump_1
+  name: Domestic pump
+  type: pump
+  zone: tower_b
+  rated_kw: 18

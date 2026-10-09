@@ -1,0 +1,133 @@
+id: municipal_campus
+name: Municipal Corporation Complex (demo)
+type: municipal_campus
+city: Puri
+state: Odisha
+lat: 19.8135
+lon: 85.8312
+area_sqm: 22300
+population:
+  staff: 900
+  visitors: 2500
+solar_kw: 80
+modules:
+- air
+- energy
+- water
+- waste
+- traffic
+- assets
+- safety
+- emissions
+thresholds:
+  pm25_alert: 60
+  bin_alert_pct: 80
+  water_lpcd: 100
+  energy_kwh_per_sqm_month: 12.1
+  night_flow_ratio: 0.35
+tariff:
+  peak: 8.8
+  offpeak: 6.2
+  peak_start: 18
+  peak_end: 22
+  currency: INR
+emission:
+  grid_kg_per_kwh: 0.71
+  dg_kg_per_kwh: 0.82
+  note: Indicative grid factor, editable assumption (see docs/ASSUMPTIONS.md)
+schedule:
+  work_start: 10
+  work_end: 17
+  weekend_factor: 0.2
+  always_on: false
+  holidays:
+  - '2026-10-20'
+score_weights:
+  energy: 0.25
+  water: 0.15
+  waste: 0.15
+  air: 0.2
+  emissions: 0.15
+  safety: 0.1
+zones:
+- id: hq
+  name: Corporation HQ
+  type: office
+  lat: 19.8142
+  lon: 85.8305
+  area_sqm: 6500
+  load_kw: 150
+  water_kld: 40
+  bins: 2
+- id: market
+  name: Municipal market
+  type: canteen
+  lat: 19.8128
+  lon: 85.833
+  area_sqm: 5200
+  load_kw: 110
+  water_kld: 180
+  bins: 4
+- id: depot
+  name: Vehicle depot
+  type: industrial
+  lat: 19.812
+  lon: 85.829
+  area_sqm: 4000
+  load_kw: 90
+  water_kld: 60
+  bins: 2
+- id: hall
+  name: Community hall
+  type: academic
+  lat: 19.815
+  lon: 85.8325
+  area_sqm: 2200
+  load_kw: 45
+  water_kld: 30
+  bins: 1
+- id: park
+  name: Public parking
+  type: parking
+  lat: 19.8138
+  lon: 85.834
+  area_sqm: 3500
+  load_kw: 6
+  water_kld: 2
+  bins: 1
+  parking_capacity: 180
+- id: pump
+  name: Water pumping station
+  type: utility
+  lat: 19.811
+  lon: 85.831
+  area_sqm: 900
+  load_kw: 130
+  water_kld: 10
+  bins: 1
+assets:
+- id: pump_main
+  name: Main pumping set
+  type: pump
+  zone: pump
+  rated_kw: 75
+- id: dg_1
+  name: DG set
+  type: dg
+  zone: depot
+  rated_kw: 125
+- id: veh_lift
+  name: Workshop lift
+  type: lift
+  zone: depot
+  rated_kw: 15
+- id: ac_hq
+  name: HQ chillers
+  type: hvac
+  zone: hq
+  rated_kw: 90
+- id: trans_1
+  name: Transformer
+  type: transformer
+  zone: pump
+  rated_kw: 250

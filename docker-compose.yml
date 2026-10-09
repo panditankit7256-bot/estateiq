@@ -1,0 +1,33 @@
+# One command: docker compose up --build   ->  http://localhost:3000
+services:
+  db:
+    image: timescale/timescaledb:latest-pg16        # PostgreSQL 16 + TimescaleDB extension
+    environment:
+      POSTGRES_USER: estateiq
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-estateiq}
+      POSTGRES_DB: estateiq
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+      - ./backend/app/db/timescale.sql:/opt/timescale.sql:ro   # optional hypertable step, see README
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U estateiq"]
+      interval: 5s
+      retries: 20
+  api:
+    build: { context: ., dockerfile: backend/Dockerfile }
+    environment:
+      DATABASE_URL: postgresql+psycopg2://estateiq:${POSTGRES_PASSWORD:-estateiq}@db:5432/estateiq
+      JWT_SECRET: ${JWT_SECRET:-change-me-in-production}
+      DEFAULT_FACILITY: ${DEFAULT_FACILITY:-engineering_college}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}        # optional; template insights are used when empty
+      CORS_ORIGINS: http://localhost:3000
+    depends_on:
+      db: { condition: service_healthy }
+    expose: ["8000"]
+    ports: ["8000:8000"]                                # API + OpenAPI docs at http://localhost:8000/docs
+  web:
+    build: { context: ., dockerfile: frontend/Dockerfile }
+    depends_on: [api]
+    ports: ["3000:80"]
+volumes:
+  dbdata:

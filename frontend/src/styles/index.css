@@ -1,0 +1,39 @@
+@import "@fontsource/ibm-plex-sans/400.css";
+@import "@fontsource/ibm-plex-sans/500.css";
+@import "@fontsource/ibm-plex-sans/600.css";
+@import "@fontsource/ibm-plex-sans-devanagari/400.css";
+@import "@fontsource/ibm-plex-sans-devanagari/600.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root, [data-theme="light"] {
+  --canvas: 243 246 245; --surface: 255 255 255; --raised: 247 250 249; --line: 215 224 222;
+  --ink: 23 38 42; --muted: 91 111 114; --brand: 31 122 99; --brandfg: 255 255 255;
+  --rail: 18 48 46; --railfg: 214 232 228; --ok: 46 125 50; --warn: 168 106 0; --bad: 184 58 46; --info: 46 108 155;
+  color-scheme: light;
+}
+[data-theme="dark"] {
+  --canvas: 14 24 26; --surface: 22 36 38; --raised: 28 44 47; --line: 43 62 65;
+  --ink: 228 238 236; --muted: 150 170 172; --brand: 74 190 160; --brandfg: 8 30 26;
+  --rail: 10 26 27; --railfg: 200 222 218; --ok: 102 187 106; --warn: 240 170 40; --bad: 240 110 95; --info: 100 170 220;
+  color-scheme: dark;
+}
+html, body, #root { height: 100%; }
+body { @apply bg-canvas text-ink font-sans antialiased; font-size: 14px; line-height: 1.5; }
+:focus-visible { outline: 2px solid rgb(var(--brand)); outline-offset: 2px; border-radius: 4px; }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+
+@layer components {
+  .card { @apply bg-surface border border-line rounded-card; }
+  .btn { @apply inline-flex items-center gap-2 rounded-md border border-line bg-surface px-3 py-1.5 text-sm font-medium text-ink hover:bg-raised disabled:opacity-50; }
+  .btn-primary { @apply border-brand bg-brand text-brandfg hover:opacity-90; }
+  .input { @apply rounded-md border border-line bg-surface px-2.5 py-1.5 text-sm text-ink; }
+  .th { @apply px-3 py-2 text-left text-xs font-semibold text-muted; }
+  .td { @apply px-3 py-2 border-t border-line; }
+}
+@media print {
+  aside, header, .no-print { display: none !important; }
+  body { background: white; color: black; }
+  .card { break-inside: avoid; }
+}

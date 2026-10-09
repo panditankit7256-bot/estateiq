@@ -1,0 +1,146 @@
+id: psu_manufacturing
+name: PSU Steel Fabrication Plant (demo)
+type: psu_manufacturing
+city: Rourkela
+state: Odisha
+lat: 22.2604
+lon: 84.8536
+area_sqm: 70000
+population:
+  workers: 3800
+  staff: 420
+solar_kw: 250
+modules:
+- air
+- energy
+- water
+- waste
+- traffic
+- assets
+- safety
+- emissions
+thresholds:
+  pm25_alert: 80
+  bin_alert_pct: 80
+  water_lpcd: 300
+  energy_kwh_per_sqm_month: 24.5
+  night_flow_ratio: 0.65
+tariff:
+  peak: 8.0
+  offpeak: 5.6
+  peak_start: 18
+  peak_end: 22
+  currency: INR
+emission:
+  grid_kg_per_kwh: 0.71
+  dg_kg_per_kwh: 0.82
+  note: Indicative grid factor, editable assumption (see docs/ASSUMPTIONS.md)
+schedule:
+  work_start: 6
+  work_end: 22
+  weekend_factor: 0.9
+  always_on: true
+  holidays: []
+score_weights:
+  energy: 0.25
+  water: 0.15
+  waste: 0.15
+  air: 0.2
+  emissions: 0.15
+  safety: 0.1
+zones:
+- id: shop1
+  name: Rolling shop
+  type: industrial
+  lat: 22.2612
+  lon: 84.852
+  area_sqm: 26000
+  load_kw: 900
+  water_kld: 380
+  bins: 3
+- id: shop2
+  name: Fabrication shop
+  type: industrial
+  lat: 22.2598
+  lon: 84.856
+  area_sqm: 20000
+  load_kw: 640
+  water_kld: 200
+  bins: 3
+- id: furn
+  name: Furnace area
+  type: industrial
+  lat: 22.262
+  lon: 84.8545
+  area_sqm: 8000
+  load_kw: 780
+  water_kld: 520
+  bins: 2
+- id: admin
+  name: Plant admin and township gate
+  type: office
+  lat: 22.259
+  lon: 84.853
+  area_sqm: 3500
+  load_kw: 90
+  water_kld: 60
+  bins: 2
+- id: util
+  name: Power and utility block
+  type: utility
+  lat: 22.2585
+  lon: 84.8575
+  area_sqm: 2500
+  load_kw: 200
+  water_kld: 80
+  bins: 1
+- id: park
+  name: Plant gate parking
+  type: parking
+  lat: 22.258
+  lon: 84.851
+  area_sqm: 8000
+  load_kw: 18
+  water_kld: 3
+  bins: 1
+  parking_capacity: 350
+- id: canteen
+  name: Plant canteen
+  type: canteen
+  lat: 22.2606
+  lon: 84.8535
+  area_sqm: 2000
+  load_kw: 85
+  water_kld: 90
+  bins: 2
+assets:
+- id: crane
+  name: Overhead crane
+  type: crane
+  zone: shop1
+  rated_kw: 90
+- id: furn_blower
+  name: Furnace blower
+  type: blower
+  zone: furn
+  rated_kw: 160
+- id: dg_1
+  name: DG set
+  type: dg
+  zone: util
+  rated_kw: 1000
+- id: comp_1
+  name: Compressor
+  type: compressor
+  zone: shop2
+  rated_kw: 132
+- id: trans_1
+  name: Main transformer
+  type: transformer
+  zone: util
+  rated_kw: 2000
+- id: cool_pump
+  name: Cooling water pump
+  type: pump
+  zone: furn
+  rated_kw: 55
